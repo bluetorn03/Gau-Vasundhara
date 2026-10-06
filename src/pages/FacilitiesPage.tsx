@@ -1,6 +1,7 @@
 import React from 'react';
 import { ShieldCheck, Heart, Leaf, Sun, CheckCircle2, ArrowRight } from 'lucide-react';
 import { FallbackImage } from '../components/ui/FallbackImage';
+import { sanctuaryImages } from '../images';
 
 interface FacilitiesPageProps {
   navigate: (route: string) => void;
@@ -12,37 +13,37 @@ export const FacilitiesPage: React.FC<FacilitiesPageProps> = ({ navigate }) => {
       title: 'Rotational Organic Pasture Meadows',
       tagline: '28 acres of free-grazing clover, alfalfa, and medicinal grasses.',
       description: 'Divided into 6 rotational paddocks allowing natural forage regeneration. Shaded by ancient neem, banyan, and peepal trees with automated freshwater drinking troughs filled from deep underground sweetwater aquifers.',
-      imageUrl: 'https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=800&q=80',
+      imageUrl: sanctuaryImages.pastureLandscape,
     },
     {
       title: 'Traditional Vedic Bilona Dairy Pavilion',
       tagline: 'Zero electricity woodfire churning under copper ventilation domes.',
       description: 'Crafted from unbaked mud bricks and lime plaster for natural cooling. Whole milk is boiled in heavy brass vessels, cultured overnight in earthen pots, and hand-churned in wooden vats using clockwise and counter-clockwise wooden whisks.',
-      imageUrl: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80',
+      imageUrl: sanctuaryImages.stories.bilonaChurning,
     },
     {
-      title: 'Veterinary Hospital & Geriatric Hospice Wing',
+      title: 'Veterinary Clinic & Geriatric Hospice Wing',
       tagline: 'Full-time resident veterinary surgeon and specialized elder cow rehab.',
       description: 'Equipped with hydraulic cow lifts for immobile patients, herbal dispensary, ultrasound diagnostics, soft wheat straw bedding, and dedicated recovery stalls with radiant heating for cold winter nights.',
-      imageUrl: 'https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?auto=format&fit=crop&w=800&q=80',
+      imageUrl: sanctuaryImages.cows.kaveriElder,
     },
     {
-      title: '200 kW Biogas Generator & Compost Yard',
-      tagline: 'Closed-loop zero-waste energy powering the entire estate.',
-      description: 'Converts 2 tons of daily cow dung into clean methane gas and electricity. Slurry is aerated and enriched with neem leaves and trichoderma to produce certified microbial bio-fertilizer for our farm fields.',
-      imageUrl: 'https://images.unsplash.com/photo-1592150621744-aca64f48394a?auto=format&fit=crop&w=800&q=80',
+      title: 'Bio-Dynamic Compost & Living Soil Yard',
+      tagline: 'Closed-loop natural soil renewal powering the entire estate.',
+      description: 'Converts sanctuary cow dung and botanical biomass into rich aerated compost and living Jeevamrit soil elixirs for organic fodder fields and regenerative home gardens.',
+      imageUrl: sanctuaryImages.products.jeevamritBooster,
     },
     {
       title: 'Mud & Lime Eco-Cottages for Farmstays',
       tagline: 'Handcrafted vernacular guest suites nestled beside grazing meadows.',
       description: 'Built with rammed earth, bamboo thatch, and natural river stone. Enjoy passive cooling, open courtyards, private stargazing verandas, and peaceful views of the evening herd return.',
-      imageUrl: 'https://images.unsplash.com/photo-1592150621744-aca64f48394a?auto=format&fit=crop&w=800&q=80',
+      imageUrl: sanctuaryImages.tours.ecoCottage,
     },
     {
-      title: 'Organic Farm Apiary & Herb Garden',
-      tagline: 'Pesticide-free mustard, tulsi, and ashwagandha cultivation.',
-      description: 'Our sanctuary apiaries pollinate chemical-free flora, yielding raw single-origin floral honey while medicinal herbs provide decoctions for cow joint therapy and human wellness products.',
-      imageUrl: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=800&q=80',
+      title: 'Heritage Indigenous Breeds Conservation Enclosure',
+      tagline: 'Dedicated preservation of pure Bos Indicus Gir and Sahiwal cow genetics.',
+      description: 'Our sanctuary maintains pedigree registries and natural herd grazing environments, ensuring that ancient Indian indigenous breeds thrive with vitality and unconditional protection.',
+      imageUrl: sanctuaryImages.stories.indigenousBreeds,
     },
   ];
 

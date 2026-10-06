@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { Product, Cow, Order } from '../types';
+import { sanctuaryImages } from '../images';
 
 export const AdminDashboard: React.FC = () => {
   const {
@@ -92,7 +93,7 @@ export const AdminDashboard: React.FC = () => {
       reviewCount: 1,
       inStock: true,
       stockQty: Number(newProductStock),
-      imageUrl: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=800&q=80',
+      imageUrl: sanctuaryImages.products.ghee500ml,
       galleryImages: [],
       variants: [{ id: `v_${Date.now()}`, name: 'Standard Size', sku: 'CT-GEN-01', price: Number(newProductPrice), stock: Number(newProductStock) }],
     });
@@ -114,7 +115,7 @@ export const AdminDashboard: React.FC = () => {
       favoriteFood: 'Green lucerne and jaggery mash',
       story: 'Welcomed into Cow Town Sanctuary pastures.',
       healthStatus: 'healthy',
-      imageUrl: 'https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=800&q=80',
+      imageUrl: sanctuaryImages.cows.ganga,
       galleryImages: [],
       isAvailableForOwnership: true,
       isElderCareProgram: false,
@@ -146,7 +147,7 @@ export const AdminDashboard: React.FC = () => {
             </h1>
           </div>
           <p className="text-xs text-gray-400 mt-1">
-            Cow Town Sanctuary Ltd · Production Administration & Hostinger Sync
+            Cow Town Sanctuary Ltd · Frontend Operations Preview (Ready for Laravel API)
           </p>
         </div>
 

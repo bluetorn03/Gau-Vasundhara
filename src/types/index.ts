@@ -196,12 +196,17 @@ export interface MembershipPlan {
   name: string;
   tier: 'silver' | 'gold' | 'patron';
   annualFee: number;
+  monthlyFee?: number;
   tagline: string;
-  description: string;
+  description?: string;
   benefits: string[];
-  gheeQuotaKg: number;
-  freeVisitsCount: number;
-  productDiscountPercent: number;
+  gheeQuotaKg?: number;
+  freeVisitsCount?: number;
+  productDiscountPercent?: number;
+  gheePerMonthKg?: number;
+  freeVisitsPerYear?: number;
+  discountPercentage?: number;
+  isPopular?: boolean;
   isRecommended?: boolean;
 }
 

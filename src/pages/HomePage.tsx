@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowRight, ShieldCheck, Heart, Sparkles, Compass, Check, Users, Leaf, Sun, Calendar, Star } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { FallbackImage } from '../components/ui/FallbackImage';
+import { sanctuaryImages } from '../images';
 
 interface HomePageProps {
   navigate: (route: string) => void;
@@ -21,7 +22,7 @@ export const HomePage: React.FC<HomePageProps> = ({ navigate }) => {
         {/* Ambient background photograph with measured scrim */}
         <div className="absolute inset-0 opacity-40 mix-blend-luminosity">
           <FallbackImage
-            src="https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=1600&q=80"
+            src={sanctuaryImages.heroBanner}
             alt="Cow Town Sanctuary Pastures at Golden Dawn"
             className="w-full h-full object-cover"
           />
@@ -271,7 +272,7 @@ export const HomePage: React.FC<HomePageProps> = ({ navigate }) => {
               <div className="space-y-4">
                 <div className="h-64 rounded-2xl overflow-hidden shadow-xs">
                   <FallbackImage
-                    src="https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=800&q=80"
+                    src={sanctuaryImages.pastureLandscape}
                     alt="Free-grazing indigenous Gir cows"
                     className="w-full h-full"
                     category="cow"
@@ -290,10 +291,10 @@ export const HomePage: React.FC<HomePageProps> = ({ navigate }) => {
                 </div>
                 <div className="h-64 rounded-2xl overflow-hidden shadow-xs">
                   <FallbackImage
-                    src="https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?auto=format&fit=crop&w=800&q=80"
-                    alt="Sahiwal guardian cows"
+                    src={sanctuaryImages.stories.bilonaChurning}
+                    alt="Traditional Vedic bilona churning in earthen pots"
                     className="w-full h-full"
-                    category="cow"
+                    category="nature"
                   />
                 </div>
               </div>
@@ -572,8 +573,8 @@ export const HomePage: React.FC<HomePageProps> = ({ navigate }) => {
           <div className="lg:col-span-6">
             <div className="rounded-2xl overflow-hidden border border-[#2C241E]/10 shadow-xs h-80">
               <FallbackImage
-                src="https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?auto=format&fit=crop&w=800&q=80"
-                alt="Elder cow resting peacefully on soft straw"
+                src={sanctuaryImages.cows.kaveriElder}
+                alt="Elder cow Kaveri resting peacefully on soft straw"
                 className="w-full h-full"
                 category="elder"
               />

@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, ShieldCheck, Heart, Leaf, Sun, CheckCircle2 } from 'lucide-react';
 import { FallbackImage } from '../components/ui/FallbackImage';
+import { sanctuaryImages } from '../images';
 
 interface AboutPageProps {
   navigate: (route: string) => void;
@@ -25,7 +26,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ navigate }) => {
       {/* Hero photo showcase */}
       <div className="rounded-3xl overflow-hidden shadow-xs h-96 relative">
         <FallbackImage
-          src="https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=1600&q=80"
+          src={sanctuaryImages.pastureLandscape}
           alt="Cow Town Sanctuary Pasture and indigenous herds"
           className="w-full h-full"
           category="nature"

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FallbackImage } from '../components/ui/FallbackImage';
+import { sanctuaryImages } from '../images';
 
 interface GalleryPageProps {
   navigate: (route: string) => void;
@@ -12,38 +13,62 @@ export const GalleryPage: React.FC<GalleryPageProps> = () => {
     {
       title: 'Dawn Pasture Grazing',
       category: 'pasture',
-      src: 'https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=800&q=80',
-      caption: 'Gir cows heading to the lush eastern clover paddocks at sunrise.',
+      src: sanctuaryImages.pastureLandscape,
+      caption: 'Indigenous Gir cows heading out to the lush clover paddocks at sunrise.',
     },
     {
-      title: 'Portrait of Nandi',
+      title: 'Ganga — Indigenous Gir Cow',
       category: 'cows',
-      src: 'https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?auto=format&fit=crop&w=800&q=80',
-      caption: 'Our magnificent resident Sahiwal bull with his serene morning gaze.',
+      src: sanctuaryImages.cows.ganga,
+      caption: 'Our beloved resident Gir cow with distinctive curved horns and gentle eyes.',
+    },
+    {
+      title: 'Nandini — Sahiwal Breed',
+      category: 'cows',
+      src: sanctuaryImages.cows.nandini,
+      caption: 'Serene Sahiwal cow grazing peacefully in the central sanctuary meadow.',
     },
     {
       title: 'Traditional Wooden Bilona Churning',
       category: 'bilona',
-      src: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80',
+      src: sanctuaryImages.stories.bilonaChurning,
       caption: 'Probiotic curd slowly churned in wooden earthen vessels to separate cultured butter.',
     },
     {
-      title: 'Family Cow Brushing Session',
+      title: 'Family Sanctuary Guided Tour',
       category: 'family',
-      src: 'https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=800&q=80',
-      caption: 'Children and parents experiencing the calming warmth of cow therapy.',
+      src: sanctuaryImages.tours.dayVisit,
+      caption: 'Children and parents experiencing the calming warmth of pasture walks and cow feeding.',
     },
     {
-      title: 'Elder Cow Wing Straw Bedding',
+      title: 'Elder Cow Kaveri Resting',
       category: 'cows',
-      src: 'https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?auto=format&fit=crop&w=800&q=80',
-      caption: 'Kamadhenu resting comfortably after her morning warm sesame massage.',
+      src: sanctuaryImages.cows.kaveriElder,
+      caption: 'Kaveri resting comfortably on soft wheat straw bedding after herbal joint massage.',
     },
     {
-      title: 'Artisan Sambrani Havan Cups',
+      title: 'Young Calf Dhruv Under Protection',
+      category: 'cows',
+      src: sanctuaryImages.cows.dhruvCalf,
+      caption: 'Playful calf Dhruv enjoying freedom and full milk nourishment.',
+    },
+    {
+      title: 'Mindful Cow Cuddling Therapy',
+      category: 'family',
+      src: sanctuaryImages.tours.cowCuddling,
+      caption: 'Grounding meditation and gentle brushing in the quiet therapy paddock.',
+    },
+    {
+      title: 'Vernacular Eco-Cottage Retreat',
+      category: 'pasture',
+      src: sanctuaryImages.tours.ecoCottage,
+      caption: 'Rammed earth eco-cottages nestled beside the sanctuary meadows.',
+    },
+    {
+      title: 'Pure Vedic A2 Bilona Ghee',
       category: 'bilona',
-      src: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=800&q=80',
-      caption: 'Hand-pressed cow dung cups filled with natural guggal, loban, and camphor.',
+      src: sanctuaryImages.products.ghee500ml,
+      caption: 'Golden granular bilona ghee freshly packaged in lead-free glass jars.',
     },
   ];
 

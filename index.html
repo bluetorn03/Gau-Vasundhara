@@ -6,30 +6,70 @@
     <script>
       // Safeguard for browser extensions attempting to monkey-patch window.fetch
       (function() {
+        var globalFetch = window.fetch ? window.fetch.bind(window) : null;
+
+        // 1. Prototype patch to allow strict mode assignment on window.fetch
         try {
-          var originalFetch = window.fetch ? window.fetch.bind(window) : null;
+          if (typeof Window !== 'undefined' && Window.prototype) {
+            Object.defineProperty(Window.prototype, 'fetch', {
+              get: function() {
+                return globalFetch;
+              },
+              set: function(fn) {
+                globalFetch = fn;
+              },
+              configurable: true,
+              enumerable: true
+            });
+          }
+        } catch (e) {}
+
+        // 2. Window own property patch
+        try {
           Object.defineProperty(window, 'fetch', {
             get: function() {
-              return originalFetch;
+              return globalFetch;
             },
             set: function(fn) {
-              originalFetch = fn;
+              globalFetch = fn;
             },
             configurable: true,
             enumerable: true
           });
-        } catch (e) {
-          // ignore if environment prohibits property redefinition
-        }
+        } catch (e) {}
 
-        // Suppress external chrome-extension injection errors
+        // 3. Suppress external chrome-extension injection errors
         window.addEventListener('error', function(event) {
-          if (event.filename && event.filename.indexOf('chrome-extension://') !== -1) {
+          var isExt = (event.filename && event.filename.indexOf('chrome-extension://') !== -1) ||
+                      (event.message && (
+                        event.message.indexOf('chrome-extension://') !== -1 ||
+                        event.message.indexOf('Cannot set property fetch of') !== -1 ||
+                        event.message.indexOf('has only a getter') !== -1
+                      ));
+          if (isExt) {
             event.preventDefault();
-            event.stopImmediatePropagation();
+            if (typeof event.stopImmediatePropagation === 'function') {
+              event.stopImmediatePropagation();
+            }
             return true;
           }
         }, true);
+
+        // 4. Hook window.onerror as fallback error suppressor
+        var prevOnError = window.onerror;
+        window.onerror = function(msg, url, line, col, err) {
+          var str = String(msg || '');
+          var urlStr = String(url || '');
+          if (urlStr.indexOf('chrome-extension://') !== -1 ||
+              str.indexOf('Cannot set property fetch') !== -1 ||
+              str.indexOf('has only a getter') !== -1) {
+            return true; // suppresses the error
+          }
+          if (typeof prevOnError === 'function') {
+            return prevOnError.apply(this, arguments);
+          }
+          return false;
+        };
       })();
     </script>
     <title>Cow Town Sanctuary – Premium Cow Care, Memberships & Tourism</title>

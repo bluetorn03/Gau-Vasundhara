@@ -114,94 +114,47 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Load state from localStorage or seed
-  const [currentUser, setCurrentUser] = useState<User | null>(() => {
-    const saved = localStorage.getItem('cts_user');
-    return saved ? JSON.parse(saved) : INITIAL_USER;
-  });
-
-  const [products, setProducts] = useState<Product[]>(() => {
-    const saved = localStorage.getItem('cts_products');
-    return saved ? JSON.parse(saved) : INITIAL_PRODUCTS;
-  });
-
+  // Pure in-memory state initialized with clean showcase data (ready for Laravel API integration)
+  const [currentUser, setCurrentUser] = useState<User | null>(INITIAL_USER);
+  const [products, setProducts] = useState<Product[]>(INITIAL_PRODUCTS);
   const [categories] = useState<ProductCategory[]>(INITIAL_CATEGORIES);
-
-  const [cows, setCows] = useState<Cow[]>(() => {
-    const saved = localStorage.getItem('cts_cows');
-    return saved ? JSON.parse(saved) : INITIAL_COWS;
-  });
-
+  const [cows, setCows] = useState<Cow[]>(INITIAL_COWS);
   const [carePlans] = useState<CowCarePlan[]>(INITIAL_CARE_PLANS);
-
-  const [ownershipRecords, setOwnershipRecords] = useState<CowOwnershipRecord[]>(() => {
-    const saved = localStorage.getItem('cts_ownership_records');
-    return saved ? JSON.parse(saved) : INITIAL_OWNERSHIP_RECORDS;
-  });
-
+  const [ownershipRecords, setOwnershipRecords] = useState<CowOwnershipRecord[]>(INITIAL_OWNERSHIP_RECORDS);
   const [membershipPlans] = useState<MembershipPlan[]>(INITIAL_MEMBERSHIPS);
-
-  const [userMembership, setUserMembership] = useState<UserMembership | null>(() => {
-    const saved = localStorage.getItem('cts_user_membership');
-    return saved ? JSON.parse(saved) : INITIAL_USER_MEMBERSHIP;
-  });
-
+  const [userMembership, setUserMembership] = useState<UserMembership | null>(INITIAL_USER_MEMBERSHIP);
   const [tourPackages] = useState<TourPackage[]>(INITIAL_TOUR_PACKAGES);
-
-  const [bookings, setBookings] = useState<TourBooking[]>(() => {
-    const saved = localStorage.getItem('cts_bookings');
-    return saved ? JSON.parse(saved) : INITIAL_BOOKINGS;
-  });
-
-  const [orders, setOrders] = useState<Order[]>(() => {
-    const saved = localStorage.getItem('cts_orders');
-    return saved ? JSON.parse(saved) : INITIAL_ORDERS;
-  });
-
-  const [cart, setCart] = useState<CartItem[]>(() => {
-    const saved = localStorage.getItem('cts_cart');
-    return saved ? JSON.parse(saved) : [];
-  });
-
+  const [bookings, setBookings] = useState<TourBooking[]>(INITIAL_BOOKINGS);
+  const [orders, setOrders] = useState<Order[]>(INITIAL_ORDERS);
+  const [cart, setCart] = useState<CartItem[]>([]);
   const [appliedCoupon, setAppliedCoupon] = useState<Coupon | null>(null);
-
-  const [siteSettings, setSiteSettings] = useState<SiteSettings>(() => {
-    const saved = localStorage.getItem('cts_settings');
-    return saved ? JSON.parse(saved) : INITIAL_SETTINGS;
-  });
-
+  const [siteSettings, setSiteSettings] = useState<SiteSettings>(INITIAL_SETTINGS);
   const [faqs, setFaqs] = useState<FAQItem[]>(INITIAL_FAQS);
   const [testimonials] = useState<Testimonial[]>(INITIAL_TESTIMONIALS);
   const [coupons] = useState<Coupon[]>(INITIAL_COUPONS);
 
-  const [emailLogs, setEmailLogs] = useState<EmailLog[]>(() => {
-    const saved = localStorage.getItem('cts_email_logs');
-    return saved ? JSON.parse(saved) : [
-      {
-        id: 'em_init_1',
-        recipient: 'aditi.sharma@example.com',
-        subject: 'Welcome to the Cow Town Sanctuary Family',
-        templateType: 'membership_welcome',
-        sentAt: '2025-11-15T10:05:00Z',
-        status: 'delivered',
-        contentPreview: 'Pranam Aditi, your Family Custodian membership is active. Certificate ID: CTS-GOLD-2025-412.',
-      }
-    ];
-  });
+  const [emailLogs, setEmailLogs] = useState<EmailLog[]>([
+    {
+      id: 'em_init_1',
+      recipient: 'aditi.sharma@example.com',
+      subject: 'Welcome to the Cow Town Sanctuary Family',
+      templateType: 'membership_welcome',
+      sentAt: '2025-11-15T10:05:00Z',
+      status: 'delivered',
+      contentPreview: 'Pranam Aditi, your Family Custodian membership is active. Certificate ID: CTS-GOLD-2025-412.',
+    }
+  ]);
 
-  const [auditLogs, setAuditLogs] = useState<AuditLog[]>(() => {
-    const saved = localStorage.getItem('cts_audit_logs');
-    return saved ? JSON.parse(saved) : [
-      {
-        id: 'aud_1',
-        timestamp: new Date().toISOString(),
-        user: 'System Setup',
-        action: 'System Initialized',
-        details: 'Loaded 6 indigenous cows, 6 farm products, and initial sanctuary schemas.',
-        ipAddress: '127.0.0.1',
-      }
-    ];
-  });
+  const [auditLogs, setAuditLogs] = useState<AuditLog[]>([
+    {
+      id: 'aud_1',
+      timestamp: new Date().toISOString(),
+      user: 'System Setup',
+      action: 'System Initialized',
+      details: 'Loaded 5 indigenous cows, 6 farm products, and initial sanctuary schemas.',
+      ipAddress: '127.0.0.1',
+    }
+  ]);
 
   const [notification, setNotification] = useState<string | null>(null);
 
@@ -224,55 +177,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setAuditLogs((prev) => [newLog, ...prev]);
   };
 
-  // Sync state to localStorage
-  useEffect(() => {
-    if (currentUser) {
-      localStorage.setItem('cts_user', JSON.stringify(currentUser));
-    } else {
-      localStorage.removeItem('cts_user');
-    }
-  }, [currentUser]);
-
-  useEffect(() => {
-    localStorage.setItem('cts_products', JSON.stringify(products));
-  }, [products]);
-
-  useEffect(() => {
-    localStorage.setItem('cts_cows', JSON.stringify(cows));
-  }, [cows]);
-
-  useEffect(() => {
-    localStorage.setItem('cts_ownership_records', JSON.stringify(ownershipRecords));
-  }, [ownershipRecords]);
-
-  useEffect(() => {
-    localStorage.setItem('cts_user_membership', JSON.stringify(userMembership));
-  }, [userMembership]);
-
-  useEffect(() => {
-    localStorage.setItem('cts_cart', JSON.stringify(cart));
-  }, [cart]);
-
-  useEffect(() => {
-    localStorage.setItem('cts_orders', JSON.stringify(orders));
-  }, [orders]);
-
-  useEffect(() => {
-    localStorage.setItem('cts_bookings', JSON.stringify(bookings));
-  }, [bookings]);
-
-  useEffect(() => {
-    localStorage.setItem('cts_settings', JSON.stringify(siteSettings));
-  }, [siteSettings]);
-
-  useEffect(() => {
-    localStorage.setItem('cts_email_logs', JSON.stringify(emailLogs));
-  }, [emailLogs]);
-
-  useEffect(() => {
-    localStorage.setItem('cts_audit_logs', JSON.stringify(auditLogs));
-  }, [auditLogs]);
-
   const switchUserRole = (role: 'customer' | 'admin' | 'guest') => {
     if (role === 'guest') {
       setCurrentUser(null);
@@ -287,11 +191,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         createdAt: '2024-01-01T00:00:00Z',
       };
       setCurrentUser(adminUser);
-      showNotification('Switched to Admin Role: Accessing Sanctuary Operations CMS');
-      addAuditLog('Admin Session Started', 'Switched to Sanctuary Director privileges');
+      showNotification('Preview Mode: Sanctuary Admin Operations');
     } else {
       setCurrentUser(INITIAL_USER);
-      showNotification('Signed in as Aditi Sharma (Family Custodian)');
+      showNotification('Preview Mode: Aditi Sharma (Customer Portal)');
     }
   };
 
@@ -630,9 +533,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       expiryDate: expiryDate.toISOString().split('T')[0],
       status: 'active',
       gheeQuotaUsedKg: 0,
-      gheeQuotaTotalKg: plan.gheeQuotaKg,
-      freeVisitsRemaining: plan.freeVisitsCount,
-      totalVisitsAllowed: plan.freeVisitsCount,
+      gheeQuotaTotalKg: plan.gheeQuotaKg ?? (plan.gheePerMonthKg ? plan.gheePerMonthKg * 12 : 0),
+      freeVisitsRemaining: plan.freeVisitsCount ?? plan.freeVisitsPerYear ?? 4,
+      totalVisitsAllowed: plan.freeVisitsCount ?? plan.freeVisitsPerYear ?? 4,
       memberIdCard,
     };
 

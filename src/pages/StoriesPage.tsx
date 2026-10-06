@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Calendar, User, Clock } from 'lucide-react';
 import { FallbackImage } from '../components/ui/FallbackImage';
+import { sanctuaryImages } from '../images';
 
 interface StoriesPageProps {
   navigate: (route: string) => void;
@@ -9,14 +10,14 @@ interface StoriesPageProps {
 export const StoriesPage: React.FC<StoriesPageProps> = ({ navigate }) => {
   const stories = [
     {
-      title: 'How Kamadhenu Found Her Peace in the Elder Cow Wing',
-      slug: 'kamadhenu-peaceful-retirement',
+      title: 'How Kaveri Found Her Peace in the Elder Cow Wing',
+      slug: 'kaveri-peaceful-retirement',
       date: 'March 2026',
       readTime: '4 min read',
       author: 'Dr. Rameshwar Rao (Chief Veterinarian)',
-      category: 'Sanctuary Rescue',
-      summary: 'After sixteen years of devoted service to a small farmer in Rajasthan, Kamadhenu was retired to Cow Town. Here is how specialized herbal joint therapy and soft straw restored her spirit.',
-      imageUrl: 'https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?auto=format&fit=crop&w=800&q=80',
+      category: 'Sanctuary Care',
+      summary: 'After sixteen years of devoted service to a small farmer in Rajasthan, Kaveri was retired to Cow Town. Here is how specialized herbal joint therapy and soft straw restored her spirit.',
+      imageUrl: sanctuaryImages.cows.kaveriElder,
     },
     {
       title: 'The Vedic Science of Bi-Directional Bilona Churning',
@@ -26,7 +27,7 @@ export const StoriesPage: React.FC<StoriesPageProps> = ({ navigate }) => {
       author: 'Cow Town Research Circle',
       category: 'Vedic Agriculture',
       summary: 'Why modern stainless-steel centrifugal cream separators destroy the fat-globule membrane, and why traditional clockwise/counter-clockwise wooden whisks yield medicinal-grade A2 lipids.',
-      imageUrl: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80',
+      imageUrl: sanctuaryImages.stories.bilonaChurning,
     },
     {
       title: 'Transforming City Children Through Cow Cuddling Therapy',
@@ -36,7 +37,7 @@ export const StoriesPage: React.FC<StoriesPageProps> = ({ navigate }) => {
       author: 'Pooja Varma (Child Educator)',
       category: 'Sanctuary Life',
       summary: 'Observing the physiological drop in stress, anxiety, and hyperactivity when children spend two quiet hours brushing and leaning against warm, rhythmic cows.',
-      imageUrl: 'https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=800&q=80',
+      imageUrl: sanctuaryImages.tours.cowCuddling,
     },
   ];
 

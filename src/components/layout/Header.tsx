@@ -127,30 +127,39 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
 
                 <div className="border-t border-gray-100 pt-1">
                   <div className="px-3 py-1 text-[10px] text-gray-400 font-semibold uppercase tracking-wider">
-                    Quick Role Switch:
+                    Demo Interface Views:
                   </div>
                   <button
-                    onClick={() => switchUserRole('customer')}
-                    className={`w-full text-left px-3 py-1.5 hover:bg-[#FAF8F5] cursor-pointer ${
+                    onClick={() => {
+                      switchUserRole('customer');
+                      handleNavClick('/dashboard');
+                    }}
+                    className={`w-full text-left px-3 py-1.5 hover:bg-[#FAF8F5] cursor-pointer text-xs ${
                       currentUser?.role === 'customer' ? 'font-semibold text-[#8E412A]' : 'text-gray-600'
                     }`}
                   >
-                    • Customer (Aditi Sharma)
+                    • Customer Portal (Aditi Sharma)
                   </button>
                   <button
-                    onClick={() => switchUserRole('admin')}
-                    className={`w-full text-left px-3 py-1.5 hover:bg-[#FAF8F5] cursor-pointer ${
+                    onClick={() => {
+                      switchUserRole('admin');
+                      handleNavClick('/admin');
+                    }}
+                    className={`w-full text-left px-3 py-1.5 hover:bg-[#FAF8F5] cursor-pointer text-xs ${
                       currentUser?.role === 'admin' ? 'font-semibold text-[#8E412A]' : 'text-gray-600'
                     }`}
                   >
-                    • Admin (Sanctuary Operations)
+                    • Admin Operations Preview
                   </button>
                   <button
                     onClick={() => switchUserRole('guest')}
-                    className="w-full text-left px-3 py-1.5 hover:bg-[#FAF8F5] text-gray-500 cursor-pointer"
+                    className="w-full text-left px-3 py-1.5 hover:bg-[#FAF8F5] text-gray-500 cursor-pointer text-xs"
                   >
-                    • Sign Out (Guest)
+                    • Guest Visitor Mode
                   </button>
+                  <div className="mt-1 px-3 py-1 text-[9px] text-[#8C7A6B] bg-[#FAF8F5] rounded-b-lg border-t border-gray-100">
+                    Ready for Laravel Session Auth
+                  </div>
                 </div>
               </div>
             )}

@@ -63,11 +63,14 @@ export const RazorpayModal: React.FC<RazorpayModalProps> = ({
           </button>
 
           <div className="flex items-center gap-2 mb-1">
-            <span className="font-semibold text-sm tracking-wide text-[#3399CC] bg-white/10 px-2 py-0.5 rounded-sm">
-              RAZORPAY SECURE
+            <span className="font-semibold text-xs tracking-wide text-[#3399CC] bg-white/10 px-2 py-0.5 rounded-sm">
+              GATEWAY INTEGRATION BOUNDARY
             </span>
-            <span className="text-[11px] text-white/60">Test Sandbox</span>
+            <span className="text-[11px] text-white/60">Frontend Demo Sandbox</span>
           </div>
+          <p className="text-[10px] text-white/70 italic mt-0.5">
+            Ready for Laravel + Razorpay Standard Checkout SDK
+          </p>
 
           <div className="flex justify-between items-end mt-3">
             <div>
