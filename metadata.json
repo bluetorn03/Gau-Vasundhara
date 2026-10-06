@@ -1,0 +1,8 @@
+{
+  "name": "Cow Town Sanctuary",
+  "description": "Premium cow sanctuary, cow ownership & elder care, sustainable organic products, memberships, and rural family tourism experiences.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
